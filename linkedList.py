@@ -21,7 +21,6 @@ class Node:
                 no_dups.append(node.data)
                 previous = node
             node = node.next
-        print no_dups
 
 head = Node(8)
 head.next = Node(12)
