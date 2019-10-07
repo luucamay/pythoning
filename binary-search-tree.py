@@ -12,7 +12,10 @@ class BST(object):
         self.insert_helper(self.root, new_val)
 
     def search(self, find_val):
-        return False
+        return self.search_helper(self.root, find_val)
+        
+    def print_tree(self):
+        return self.inorder_print(self.root,"")[:-1]
         
     def insert_helper(self, current, new_val):
         if current:
@@ -26,16 +29,18 @@ class BST(object):
                     self.insert_helper(current.left, new_val)
                 else:
                     current.left = Node(new_val)
-        
-    def print_tree(self):
-        """Print out all tree nodes
-        as they are visited in
-        a pre-order traversal."""
-        return self.inorder_print(self.root,"")[:-1]
+                    
+    def search_helper(self, current, find_val):
+        if current:
+            if current.value == find_val:
+                return True
+            elif current.value > find_val:
+                self.search_helper(current.left, find_val)
+            else:
+                self.search_helper(current.right, find_val)
+        return False
 
     def inorder_print(self, currentNode, traversal):
-        """Helper method - use this to create a 
-        recursive print solution."""
         if currentNode:
             traversal = self.inorder_print(currentNode.left,traversal)
             traversal += (str(currentNode.value) + "-")
