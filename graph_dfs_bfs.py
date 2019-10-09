@@ -170,8 +170,17 @@ class Graph(object):
         RETURN: a list of the node values (integers)."""
         node = self.find_node(start_node_num)
         self._clear_visited()
-        ret_list = [node.value]
-        # Your code here
+        ret_list = []
+        queue = []
+        node.visited = True
+        queue.append(node)
+        while queue:
+            r = queue.pop(0)
+            ret_list.append(r.value)
+            for edg in r.edges:
+                if not edg.node_to.visited:
+                    edg.node_to.visited = True
+                    queue.append(edg.node_to)
         return ret_list
 
     def bfs_names(self, start_node_num):
