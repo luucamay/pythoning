@@ -1,7 +1,7 @@
 def is_shifted(A, B):
     if len(A) == len(B) and len(A) > 0:
         indexB = B.find(A[0])
-        if indexB > -1:
+        if indexB:
             for indexA in range(len(A)):
                 if A[indexA] == B[indexB]:
                         indexB += 1
@@ -12,3 +12,4 @@ def is_shifted(A, B):
     return False
 
 print is_shifted('abcde','cdeab')
+print is_shifted('abc', 'acb')
