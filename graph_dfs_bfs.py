@@ -140,7 +140,11 @@ class Graph(object):
         MODIFIES: the value of the visited property of nodes in self.nodes 
         RETURN: a list of the traversed node values (integers).
         """
-        ret_list = [start_node.value]
+        ret_list.append(start_node.value)
+        start_node.visited = True
+        for edg in start_node.edges:
+            if not edg.node_to.visited:
+                self.dfs_helper(edg.node_to, ret_list)
         # Your code here
         return ret_list
 
