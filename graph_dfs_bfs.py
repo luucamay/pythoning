@@ -145,7 +145,6 @@ class Graph(object):
         for edg in start_node.edges:
             if not edg.node_to.visited:
                 self.dfs_helper(edg.node_to, ret_list)
-        # Your code here
         return ret_list
 
     def dfs(self, start_node_num):
