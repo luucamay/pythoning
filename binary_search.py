@@ -14,11 +14,9 @@ def binary_search(input_array, value):
     size = len(input_array)
     if size > 0:
         number_of_loops = int(round(math.sqrt(size)))
-        print number_of_loops
         size = size/2 + 1
         index = size - 1
         for i in range(number_of_loops):
-            print i, size, index
             if input_array[index] == value:
                 return index
             size = size/2
@@ -31,5 +29,7 @@ def binary_search(input_array, value):
 test_list = [1,3,9,11,15,19,29]
 test_val1 = 25
 test_val2 = 15
+test_val3 = 0
 print binary_search(test_list, test_val1)
 print binary_search(test_list, test_val2)
+print binary_search(test_list, test_val3)
