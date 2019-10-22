@@ -2,13 +2,13 @@ class Node:
     def __init__(self,data):
         self.data = data
         self.next = None
-    
+
     def traverse(self):
         node = self
         while node != None:
             print node.data,
             node = node.next
-        print ''    
+        print ''
 
     def remove_duplicates(self):
         no_dups = []
@@ -22,6 +22,7 @@ class Node:
                 previous = node
             node = node.next
 
+# Test
 head = Node(8)
 head.next = Node(12)
 head.next.next = Node(13)
