@@ -38,6 +38,17 @@ class Node:
                 my_set.add(node.data)
                 previous = node
             node = node.next
+    # Using two pointers
+    def remove_dups_pointers(self):
+        node = self
+        while node:
+            runner = node
+            while runner.next:
+                if runner.next.data == node.data:
+                    runner.next = runner.next.next
+                else:
+                    runner = runner.next
+            node = node.next
 
 # Test
 head = Node(8)
@@ -51,5 +62,5 @@ head.next.next.next.next.next.next.next = Node (13)
 head.next.next.next.next.next.next.next.next = Node (11)
 
 head.traverse()
-head.remove_dups()
+head.remove_dups_pointers()
 head.traverse()
