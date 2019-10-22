@@ -1,6 +1,8 @@
 '''
 Restore IP Addresses
 
+Program to generate all possible valid IP addresses from given string.
+
 Given a string containing only digits, retrun the possible IP addresses
 you can make with that string by spliting into 4 parts of A, B, C, D.
 
