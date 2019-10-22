@@ -1,3 +1,8 @@
+'''
+Remove duplicates from an unsorted linked list. (P. 105)
+Follow up: How would you solve this problem if a temporary buffer is not allowed?
+Hints: Use a hash table. Use two pointers where second searchs ahead of the first one.
+'''
 class Node:
     def __init__(self,data):
         self.data = data
@@ -21,6 +26,18 @@ class Node:
                 no_dups.append(node.data)
                 previous = node
             node = node.next
+    # Using a set
+    def remove_dups(self):
+        node = self
+        previous = None
+        my_set = set()
+        while node:
+            if node.data in my_set:
+                previous.next = node.next
+            else:
+                my_set.add(node.data)
+                previous = node
+            node = node.next
 
 # Test
 head = Node(8)
@@ -34,5 +51,5 @@ head.next.next.next.next.next.next.next = Node (13)
 head.next.next.next.next.next.next.next.next = Node (11)
 
 head.traverse()
-head.remove_duplicates()
+head.remove_dups()
 head.traverse()
