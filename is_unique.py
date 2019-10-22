@@ -13,6 +13,17 @@ def is_unique1(string):
 You should check if it is an ascci or unicode
 128 characters in ascci alphabet
 '''
+# Second solution
+def is_unique2(string):
+    n = len(string)
+    letters = [0]*128
+    for i in range(n):
+        val = ord(string[i])
+        if (letters[val]):
+            return False
+        letters[val] = 1
+    return True
 
 # Test
 print is_unique1("cabdcd")
+print is_unique2("cabdcd")
