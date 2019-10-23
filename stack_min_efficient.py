@@ -1,3 +1,14 @@
+'''
+Stack Min
+How would you design a stack which, in addition to push and pop, has a function min
+which returns the minimum element? Push, pop and min should all operate in 0(1) time.
+Hints:
+#27 Only changes when a smaller element is added
+#59 Keep track of extra data at each node?
+#78 Consider having each node know the minimum of its "substack" (all the elements
+beneath it, including itself). 
+'''
+# Solution using additional stack for min values
 import sys
 
 class Stack:
