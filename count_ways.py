@@ -6,6 +6,8 @@ Implement a method to count how many possible ways
 the child can run up the stairs.
 '''
 
+from collections import defaultdict
+
 # A recursive solution found at geeksforgeeks
 def findStep( n) :
     if (n == 1 or n == 0) :
@@ -40,10 +42,30 @@ print(countWays(n))
 def count_ways(n):
     if n < 0:
         return 0
-    if n == 0:
+    elif n == 0:
         return 1
-    return count_ways(n -1) + count_ways(n-2) + count_ways(n-3)
+    else:
+        return count_ways(n -1) + count_ways(n-2) + count_ways(n-3)
 
 # Test case
 n = 4
 print(count_ways(n)) 
+
+# DP with memoization solution from Cracking the coding interview
+def find_step_main(n):
+    memo = defaultdict(int) # I think we could use a list/array instead
+    return find_step(n, memo)
+def find_step(n, memo):
+    if n < 0:
+        return 0
+    elif n == 0:
+        return 1
+    elif memo[n]:
+        return memo[n]
+    else:
+        memo[n] = find_step(n-1, memo) + find_step(n-2, memo) + find_step(n-3, memo)
+        return memo[n]
+
+# Test code 
+n = 4
+print(find_step_main(n))
