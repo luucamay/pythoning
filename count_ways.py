@@ -35,3 +35,15 @@ def countWays(n) :
 # Test code
 n = 4
 print(countWays(n))
+
+# Recursive solution from Cracking the coding interview
+def count_ways(n):
+    if n < 0:
+        return 0
+    if n == 0:
+        return 1
+    return count_ways(n -1) + count_ways(n-2) + count_ways(n-3)
+
+# Test case
+n = 4
+print(count_ways(n)) 
