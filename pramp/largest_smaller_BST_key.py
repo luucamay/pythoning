@@ -34,10 +34,9 @@ class BinarySearchTree:
     # if smaller check left node
     output = -1
     current_node = self.root ###
-    while current_node:  
-      if current_node.key < num and output < current_node.key:
-        output = current_node.key
+    while current_node:
       if current_node.key < num:
+        output = current_node.key
         current_node = current_node.right
       else:
         current_node = current_node.left
