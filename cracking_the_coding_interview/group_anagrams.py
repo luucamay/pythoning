@@ -1,6 +1,8 @@
 '''
 Group Anagrams
 
+Write a method to sort an array ot strings so that all
+tne anagrams are next to each other.
 '''
 from collections import defaultdict
 
