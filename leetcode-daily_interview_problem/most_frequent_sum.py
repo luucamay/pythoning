@@ -35,3 +35,32 @@ def sum_helper(root, dictionary):
 # Test cases
 root = Node(3, Node(1), Node(-3))
 print(most_freq_subtree_sum(root))
+'''
+Follow up (giribilla):
+If there is a tie, return all the values with the highest frequency in any order.
+'''
+from collections import defaultdict
+class Solution(object):
+    def findFrequentTreeSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+            """
+        dictionary = defaultdict(int)
+        self.sum_helper(root, dictionary)
+        if dictionary:
+            repetition = max(dictionary.values())
+        output = []
+        for key in dictionary:
+            if repetition == dictionary[key]:
+                output.append(key)
+        return output
+    
+    def sum_helper(self, root, dictionary):
+        node = root
+        if not node:
+            return 0
+        total = node.val + self.sum_helper(node.left, dictionary) + self.sum_helper(node.right, dictionary)
+
+        dictionary[total] += 1
+        return total
