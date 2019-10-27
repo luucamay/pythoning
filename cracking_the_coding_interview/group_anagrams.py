@@ -3,6 +3,12 @@ Group Anagrams
 
 Write a method to sort an array ot strings so that all
 tne anagrams are next to each other.
+Hints:
+# 177: think about definition of anagrams
+# 182: two anagrams are the same if they have same
+chars but in different order.
+# 263: can you leverage a standard sorting algorithm?
+# 342: do you need to truly sort or just reorganize?
 '''
 from collections import defaultdict
 
