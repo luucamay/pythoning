@@ -1,4 +1,13 @@
 '''
+Minimal Tree (P. 120) Sol(P. 253)
+Given a sorted (increasing order) array with unique integeer elements,
+write an algorithm to create a binary search tree with minimal height.
+Hints:
+# 19: A minimal binary tree has the same nodes on the left and on the right.
+# 73: Try recursion, can you divide in subproblems?
+# 116: Imagina there is a function CreateMinimalTree that returns a minimal tree
+My hints:
+Return the root!
 '''
 # 1st approach
 class Node:
@@ -26,7 +35,7 @@ def helper (arr):
     if size > 0:
         quotient = size // 2
         node = Node(arr[quotient])
-        if quotient != 0:
+        if quotient != 0: # this means there was only one element in the array
             node.left = helper(arr[:quotient])
             node.right = helper(arr[quotient+1:])
     return node
