@@ -25,23 +25,19 @@ input:  text = '())('
 output: 2
 '''
 def bracket_match(text):
-  size = len(text)
-  if size == 0:
-    return 0
-  opens = 0
-  closes = 0
+  counter = 0
   output = 0
   for c in text:
     if c == '(':
-      opens += 1
+      counter += 1
     else:
-      closes += 1
-    if closes > opens:
+      counter -= 1
+    if counter < 0:
       output += 1
-      opens += 1
-  output = output + (opens - closes)
+      counter += 1
+  output = output + counter
   return output
 
 # Test
-text = "())("
-print bracket_match(text)
+print bracket_match("())(")
+print bracket_match("(")
