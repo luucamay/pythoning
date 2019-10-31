@@ -1,3 +1,7 @@
+'''
+Binary Search Tree Successor Search
+In a binary search tree find the node with the smallest key greater than the key of the input node.
+'''
 #########################################################
 # CODE INSTRUCTIONS:                                    #
 # 1) The method findInOrderSuccessor you're asked      #
