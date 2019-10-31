@@ -13,7 +13,7 @@ Hints
 # 298: Can you modify Binary Search for this? 
 # 310: What if the array has duplicates?
 '''
-# Solution works for 193/196 cases at leetcode
+# Solution works for Duplicates too
 def search_sorted_rotated(arr, key):
     return search(arr, 0, len(arr) - 1, key)
 
@@ -30,13 +30,24 @@ def search(arr, low, high, key):
             return search(arr, low, mid - 1, key)
         else:
             return search(arr, mid + 1, high, key)
-    else:
+    # right part is sorted
+    elif arr[mid] < arr[high]:
         if arr[mid] < key and arr[high] >= key:
             return search(arr, mid + 1, high, key)
         else:
             return search(arr, low, mid - 1, key)
+    
+    elif arr[low] == arr[mid]:
+        if arr[mid] != arr[high]:
+            return search(arr, mid + 1, high, key)
+        else:
+            result = search(arr, low, mid - 1, key)
+            if result == -1:
+                return search(arr, mid + 1, high, key)
+            else:
+                return result
 
 # Test cases
-a = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]
+a = [15, 16, 19, 20, 25, 1, 5, 6, 6, 6, 10, 14]
 x = 5
 print search_sorted_rotated(a, x)
