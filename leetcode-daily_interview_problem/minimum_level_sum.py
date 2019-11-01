@@ -1,4 +1,6 @@
 '''
+Find minimum level sum.
+
 Yoy are given a root of a binary tree.
 Find the level for the binary tree with the minimum sum, and return that value.
 
