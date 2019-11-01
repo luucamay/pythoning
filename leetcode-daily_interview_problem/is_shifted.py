@@ -1,3 +1,7 @@
+'''
+Is Shiftet - Daily Interview Problem
+Given two strings find out if they are the same but in rotated order
+'''
 def is_shifted(A, B):
     '''
     if len(A) == len(B) and len(A) > 0:
