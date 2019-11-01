@@ -1,3 +1,7 @@
+'''
+Longest Consecutive
+Print the size of the logest consecutive subarray
+'''
 def logest_consecutive(numbers):
     longest_len = 0
     numbers.sort()
