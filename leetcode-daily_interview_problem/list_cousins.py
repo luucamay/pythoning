@@ -36,9 +36,9 @@ def list_cousins(root, val):
             if n.right and n.right.val == val:
                 node_found = True
                 brother = n.left
-            if n.left and n.left != brother:
+            if n.left and n.left != brother and n.left.val != val:
                 queue.append(n.left)
-            if n.right and n.right != brother:
+            if n.right and n.right != brother and n.right.val != val:
                 queue.append(n.right)
         if node_found:
             return [x.val for x in queue]
@@ -61,4 +61,5 @@ print list_cousins(root, 5)
 print list_cousins(root, 4)
 print list_cousins(root, 10)
 print list_cousins(root, 13)
+print list_cousins(root, 11)
 
