@@ -1,3 +1,18 @@
+'''
+List cousins
+Given a binary tree and a given node value, return all of the node's cousins. 
+Two nodes are considered cousins if they are on the same level of the tree with different parents. 
+You can assume that all nodes will have their own unique value.
+
+Example:
+#     1
+#    / \
+#   2   3
+#  / \   \
+# 4   6   5
+print list_cousins(root, 5)
+# [4, 6]
+'''
 class Node(object):
     def __init__(self, val, left=None, right=None):
         self.val = val
