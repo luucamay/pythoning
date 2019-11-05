@@ -43,7 +43,8 @@ def validUtf8(data):
     mask1 = 1 << 7
     mask2 = 1 << 6
     for num in data:
-        bin_rep = format(num, '#010b')[-8:]
+        # bin_rep = format(num, '#010b')[-8:]
+        
         mask = 1 << 7
         if n_bytes == 0:
             while mask & num:
