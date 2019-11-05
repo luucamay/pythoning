@@ -1,7 +1,10 @@
 '''
 Unique binary search trees II
 
-Leetcode #95
+Daily Interview Problem - Leetcode #95
+
+Given a number n, generate all binary search trees
+that can be constructed with nodes 1 to n.
 '''
 class Node:
     def __init__(self, val, left=None, right=None):
