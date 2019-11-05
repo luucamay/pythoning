@@ -33,27 +33,33 @@ The next byte is a continuation byte which starts with 10 and that's correct.
 But the second continuation byte does not start with 10, so it is invalid.
 
 '''
-def validUtf8(self, data):
+def validUtf8(data):
     """
     :type data: List[int]
     :rtype: bool
     """
     n_bytes = 0
 
+    mask1 = 1 << 7
+    mask2 = 1 << 6
     for num in data:
         bin_rep = format(num, '#010b')[-8:]
+        mask = 1 << 7
         if n_bytes == 0:
-            for bit in bin_rep:
-                if bit == '0': break
+            while mask & num:
                 n_bytes += 1
+                mask = mask >> 1
             if n_bytes == 0:
                 continue
             if n_bytes == 1 or n_bytes > 4:
                 return False
         else:
-            if not (bin_rep[0] == '1' and bin_rep[1] == '0'):
+            if not (num & mask1 and not (num & mask2)):
                 return False
         
         n_bytes -= 1
 
-    return n_bytes == 0     
+    return n_bytes == 0
+
+# Test cases
+print validUtf8([197, 130, 1])
