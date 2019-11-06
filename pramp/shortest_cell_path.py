@@ -32,23 +32,19 @@ output: -1
 0001
 1011
 '''
-def shortestCellPath(grid, sr, sc, tr, tc): 
-  num_col = len(grid[0])
+def shortestCellPath(grid, sr, sc, tr, tc):
   num_row = len(grid)
+  num_col = len(grid[0])
   visited = set()
-  current = [(sr, sc)]
-  path_distance = {}
-  path_distance[(sr, sc)] = 0
+  current = [(sr, sc, 0)]
   while current: 
-    r, c = current.pop(0)
-    d = path_distance[(r, c)]
+    r, c, d = current.pop(0)
     if r == tr and c == tc:
       return d
     for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
         if r >= 0 and r < num_row and c >= 0 and c < num_col: # not out of the grid
             if grid[r][c] == 1 and (r, c) not in visited:
-                current.append((nr, nc))
-                path_distance[(nr, nc)] = d + 1
+                current.append((nr, nc, d + 1))
     visited.add((r, c))
   return -1
 
