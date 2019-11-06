@@ -41,11 +41,11 @@ def shortestCellPath(grid, sr, sc, tr, tc):
     r, c, d = current.pop(0)
     if r == tr and c == tc:
       return d
-    for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
-        if r >= 0 and r < num_row and c >= 0 and c < num_col: # not out of the grid
-            if grid[r][c] == 1 and (r, c) not in visited:
-                current.append((nr, nc, d + 1))
     visited.add((r, c))
+    for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+        if nr >= 0 and nr < num_row and nc >= 0 and nc < num_col: # not out of the grid
+            if grid[nr][nc] == 1 and (nr, nc) not in visited:
+                current.append((nr, nc, d + 1))
   return -1
 
 # Test cases:
