@@ -11,35 +11,34 @@ Output: 4
 Hints: # 256
 '''
 def sparse_search(string, arr):
-    return helper(string, arr, 0, len(arr) - 1)
-def helper(string, arr, start, end):
-    if end < start:
-        return -1
-    mid = (start + end) // 2
-    print start, end, mid
-    if arr[mid] == "":
-        left = mid - 1
-        right = mid + 1
-        while True:
-            if left < start and right > end:
-                return -1
-            elif right <= end and arr[right] != "":
-                mid = right
-                break
-            elif left >= start and arr[left] != "":
-                mid = left
-                break
-            right += 1
-            left -= 1
-    
-    if arr[mid] == string:
-        return mid
-    elif arr[mid] < string:
-        # check right chunk
-        return helper(string, arr, mid + 1, end)
-    else:
-        # check left chunk
-        return helper(string, arr, start, mid - 1)
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = (start + end) // 2
+        if arr[mid] == "":
+            left = mid - 1
+            right = mid + 1
+            while True:
+                if left < start and right > end:
+                    return -1
+                elif right <= end and arr[right] != "":
+                    mid = right
+                    break
+                elif left >= start and arr[left] != "":
+                    mid = left
+                    break
+                right += 1
+                left -= 1
+        
+        if arr[mid] == string:
+            return mid
+        elif arr[mid] < string:
+            # check right chunk
+            start = mid + 1
+        else:
+            # check left chunk
+            end = mid - 1
+    return -1
     
 
 # Test
