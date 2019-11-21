@@ -16,20 +16,31 @@ def helper(string, arr, start, end):
     if end < start:
         return -1
     mid = (start + end) // 2
+    print start, end, mid
+    if arr[mid] == "":
+        left = mid - 1
+        right = mid + 1
+        while True:
+            if left < start and right > end:
+                return -1
+            elif right <= end and arr[right] != "":
+                mid = right
+                break
+            elif left >= start and arr[left] != "":
+                mid = left
+                break
+            right += 1
+            left -= 1
+    
     if arr[mid] == string:
         return mid
-    if arr[mid] != "":
-        if arr[mid] < string:
-            # check right chunk
-            helper(string, arr, mid + 1, end)
-        else:
-            # check left chunk
-            helper(string, arr, start, mid - 1)
-    left = helper(string, arr, start, mid - 1)
-    if left >= 0:
-        return left
-    right = helper(string, arr, mid + 1, end)
-    return right
+    elif arr[mid] < string:
+        # check right chunk
+        return helper(string, arr, mid + 1, end)
+    else:
+        # check left chunk
+        return helper(string, arr, start, mid - 1)
+    
 
 # Test
 string = "dad"
