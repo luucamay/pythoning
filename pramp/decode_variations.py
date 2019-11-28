@@ -62,10 +62,11 @@ def decode_variations(S):
     return dp[0]
 
 # Test
-print decode_variations('321121311231')
+#print decode_variations('321121311231')
 
 # Third approach
 def decode_variation(S):
+    n = len(S)
     pre = 27
     cur = 0
     first = 1
@@ -79,9 +80,9 @@ def decode_variation(S):
             if d*10 + pre < 27:
                 cur += second
         pre = d
-        first = cur
         second = first
+        first = cur
     return cur
 
 # Test
-print decode_variations('321121311231')
+print decode_variation('1262')
