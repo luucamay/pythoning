@@ -40,3 +40,26 @@ def decodeVariations(S):
       return 0
   else:
     return decodeVariations(S[:n-1]) * int(decodable(S[n-1])) + decodeVariations(S[:n-2]) * int(decodable(S[n-2:]))
+
+# Second approach
+def decode_variations(S):
+    n = len(S)
+    dp = [0]*(n+1)
+    dp[n] = 1
+    for i in range(n-1, -1, -1):
+        if S[i] == '0':
+            dp[i] = 0
+        elif S[i] == '1':
+            dp[i] = dp[i+1]
+            if i+1 < n:
+                dp[i] += dp[i+2]
+        elif S[i] == '2':
+            dp[i] = dp[i+1]
+            if i+1 < n and S[i+1] <= '6':
+                dp[i] += dp[i+2]
+        else:
+            dp[i] = dp[i+1]
+    return dp[0]
+
+# Test
+print decode_variations('321121311231')
