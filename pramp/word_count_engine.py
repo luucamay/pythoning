@@ -51,22 +51,55 @@ def clean_word(word):
       out += c
   return out
 
+# Test
 document = "Every book is a quotation; and every house is a quotation out of all forests, and mines, and stone quarries; and every man is a quotation from all his ancestors. "
 print word_count_engine(document)
 
-'''
-input:  document = "Practice makes perfect. you'll only
-                    get Perfect by practice. just practice!"
+def wordCountEngine(document):
+  words = document.split()
+  d = OrderedDict()
+  largest_count = 0
+  for word in words:
+    word = format_word(word)
+    if word == '':
+      continue
+    occurrences = 0
+    if word in d:
+      occurrences = d[word] + 1
+    else:
+      occurrences = 1
+    if occurrences > largest_count:
+      largest_count = occurrences
+    d[word] = occurrences
+  
+  # Add the dictionary word and occurrences to an array
+  # Using bucket sort
+  output = []
+  count_list = [0]*(largest_count+1)
+  for word in d:
+    counter = d[word]
+    if count_list[counter] == 0:
+      count_list[counter] = []
+    count_list[counter].append(word)
+  
+  for k in range(largest_count, -1, -1):
+    word_list = count_list[k]
+    if word_list == 0:
+      continue
+    for word in word_list:
+      output.append([word, str(k)])
 
-output: [ ["practice", "3"], ["perfect", "2"],
-          ["makes", "1"], ["youll", "1"], ["only", "1"], 
-          ["get", "1"], ["by", "1"], ["just", "1"] ]
-not solved:
-if two words same count then sorted as in the original array
-clean the input to remove not desired symbols
+  return output
 
-strip the input => get word elements
-clean the input to remove not desired symbols
-count words in the hashmap
-key is a word, value is occurrences, use lambda'''
+def format_word(word):
+  formated = ''
+  word = word.lower()
+  for c in word:
+    if c >= 'a' and c <= 'z':
+      formated += c
+  return formated
 
+# Test
+print ""
+document = "Every book is a quotation; and every house is a quotation out of all forests, and mines, and stone quarries; and every man is a quotation from all his ancestors. "
+print wordCountEngine(document)
