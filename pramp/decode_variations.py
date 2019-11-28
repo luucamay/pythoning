@@ -63,3 +63,25 @@ def decode_variations(S):
 
 # Test
 print decode_variations('321121311231')
+
+# Third approach
+def decode_variation(S):
+    pre = 27
+    cur = 0
+    first = 1
+    second = 1
+    for i in range(n-1, -1, -1):
+        d = int(S[i])
+        if d == 0:
+            cur = 0
+        else:
+            cur = first
+            if d*10 + pre < 27:
+                cur += second
+        pre = d
+        first = cur
+        second = first
+    return cur
+
+# Test
+print decode_variations('321121311231')
