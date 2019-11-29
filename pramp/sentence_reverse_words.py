@@ -16,20 +16,19 @@ output: [ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
           'p', 'e', 'r', 'f', 'e', 'c', 't' ]
 '''
 def reverse_words(arr):
-  n = len(arr)
   word = []
   spaces = []
   output = []
-  for i in range(n):
-    if arr[i] == ' ':
-      spaces.append(arr[i])
-      if i == (n - 1) or arr[i + 1] != ' ' :
+  for c in arr:
+    if c == ' ':
+      spaces.append(c)
+      if word:
         output = word + output
-        output = spaces + output
-        word = []
-        spaces = []
+      word = []
     else:
-      word.append(arr[i])
-      if i == (n - 1):
-        output = word + output
+      word.append(c)
+      if spaces:
+        output = spaces + output
+      spaces = []
+  output = spaces + word + output
   return output
