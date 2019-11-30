@@ -58,3 +58,46 @@ print shortest_word_edit_path("bit", "pog", ["but","put","big","pot","pog","pig"
 print shortest_word_edit_path("aa", "bb", ["ab","bb"])
 print shortest_word_edit_path("abc", "ab", ["abc","ab"])
 print shortest_word_edit_path("aa", "bbb", ["ab","bb"])
+
+# second approach
+def shortestWordEditPath(source, target, words):
+  queue = [source]
+  children = []
+  level = -1
+  visited = set()
+  
+  while queue:
+    level += 1
+    children = queue
+    queue = []
+    
+    for node in children:
+      if node == target:
+        return level
+      
+      for word in words:
+        # check if the word has only one edit
+        if word not in visited and has_one_edit(word, node):
+          visited.add(word)
+          queue.append(word)
+          
+  return -1
+
+
+def has_one_edit(source, target):
+  n = len(source)
+  m = len(target)
+  if n != m:
+    return False
+  
+  differences = 0
+  for i in range(n):
+    if source[i] != target[i]:
+      differences +=1
+      if differences > 1:
+        return False
+  
+  if differences == 1:
+    return True
+  else:
+    return False
