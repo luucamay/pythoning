@@ -18,21 +18,26 @@ def reverseNodesInKGroups(l, k):
     tail = None
     newHead = None
     join = None
-    t = 0
+    count = 0
   
     # Traverse till the end of the linked list  
     while (curr) :  
-        t = k  
-        join = curr  
+        count = k  
+        join = curr
         prev = None
-        
+        it = curr
+        while it and count:
+            count = count - 1
+            it = it.next
+        if count != 0 and tail:
+            tail.next = curr
+            break
         # Reverse group of k nodes of the linked list  
-        while (curr and t > 0): 
+        for i in range(k): 
             temp = curr.next
             curr.next = prev 
             prev = curr 
             curr = temp 
-            t = t - 1
   
         # Sets the new head of the input list  
         if (newHead == None):  
