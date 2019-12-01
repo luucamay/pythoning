@@ -33,3 +33,29 @@ def get_indices_of_item_wights(arr, limit):
 arr = [4,4,4]
 limit = 8
 print get_indices_of_item_wights(arr, limit)
+
+# Approach on October 29th
+from collections import defaultdict
+def get_indices_of_item_wights(arr, limit):
+  my_dict = defaultdict(list)
+  output = []
+  for j in range(len(arr)):
+    if my_dict[arr[j]]:
+      my_dict[arr[j]].append(j)
+    else:
+      my_dict[arr[j]] = [j]
+    
+  for i in range(len(arr)):
+    x = limit - arr[i]
+    if x in my_dict:
+      for index in my_dict[x]:
+        if i > index:
+          output = [i, index] 
+          
+
+  return output
+
+# Test
+arr = [4, 6, 10, 15, 16]
+lim = 21
+print get_indices_of_item_wights(arr, lim)
