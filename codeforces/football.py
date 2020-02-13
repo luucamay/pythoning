@@ -1,5 +1,6 @@
 '''
 Football - Codeforces
+https://codeforces.com/problemset/problem/96/A
 '''
 situation = input()
 ceros = '0000000'
