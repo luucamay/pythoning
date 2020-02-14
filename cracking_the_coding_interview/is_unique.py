@@ -1,5 +1,6 @@
 '''
-1.1 Is Unique - Cracking the coding interview, P. 101
+Is Unique - Cracking the coding interview 
+Chapter 1, Problem #1
 
 Implement is_unique function that return True when all the characters in a string are different.
 What if you cannot use additional data structures?
