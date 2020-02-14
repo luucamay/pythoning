@@ -43,5 +43,6 @@ def is_unique3(string):
     return True
 
 # Test
-print is_unique1("cabdcd")
-print is_unique2("cabdcd")
+print (is_unique1("cabdcd"))
+print (is_unique2("cabdcd"))
+print (is_unique3("cabdcd"))
