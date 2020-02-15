@@ -11,6 +11,11 @@ If you want to check the problems you can check them here:
 
 You can also go the official website of Google competitions here: https://codingcompetitions.withgoogle.com/codejamio/round/000000000019ff03
 
-I am not really sure if my solutions counted, because I do not understand very well the Google Competitions UI, I clicked at submmit attempt I hope that is enough, but I do not see my score yet 🤷‍♀️
+I am not really sure if my solutions counted, because I do not understand very well the Google Competitions UI.
+
+I clicked the submmit attempt button, I hope that is enough, but I do not see my score yet 🤷‍♀️ and after that I got this answer:
+
+![Test 1 Completed](https://github.com/luucamay/pythoning/blob/master/codejamio/Test%201%20completed.png)
+
 
 I will wait and let you know how this went! :)
