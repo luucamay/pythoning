@@ -1,5 +1,6 @@
 '''
 Helpful Maths - Codeforces
+https://codeforces.com/problemset/problem/339/A
 '''
 
 given_sum = [int(x) for x in input().split('+')]
